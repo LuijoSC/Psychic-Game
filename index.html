@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Psychic Game</title>
+</head>
+<body>
+    <div>
+        <h1>The Psychic Game</h1>
+        <p id="directions-text">Guess what letter I'm thinking of</p>
+        <p id="userchoice-text"></p>
+        <p >Wins: <span id="wins-text"></span></p>
+        <p >Looses: <span id="looses-text"></span></p>
+        <p >Guesses left: <span id="guesses-left"></span></p>
+        <p >Your guesses so far: <span id="guesses-count"></span></p>
+      </div>
+
+<script type="text/javascript">
+// Create an array that lists all alphabet letters
+var computerChoices = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+
+// Create variables to hold the numbers
+var wins = 0;
+var looses = 0;
+var guessLeft = 10;
+var guessFar = "";
+
+// Create variables that hold references to the places in the HTML where we want to display things
+    var userChoiceText = document.getElementById("userchoice-text");
+    var winsText = document.getElementById("wins-text");
+    var loosesText = document.getElementById("looses-text");
+    var guessesText = document.getElementById("guesses-left");
+    var guessesFarText = document.getElementById("guesses-count");
+
+    // guessesText.textContent = guessLeft;
+
+// This function is run whenever the user presses a key.
+document.onkeyup = function(event) {
+   
+
+// Determines which key was pressed.
+var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+var userGuess = event.key;
+
+console.log(computerGuess);
+console.log(userGuess);
+console.log(winsText, wins)
+// Randomly chooses a choice from the options array. This is the Computer's guess.
+
+
+// Reworked our code from last step to use "else if" instead of lots of if statements.
+
+// 
+if(guessLeft == 0){
+    guessLeft = 10;
+    guessFar = "";
+    looses++;
+    guessesText.textContent = guessLeft;
+    guessesFarText.textContent = guessFar;
+     
+    loosesText.textContent = looses;
+}else if (computerGuess == userGuess){
+    guessLeft = 10;
+    guessFar = "";
+    wins++;
+    guessesText.textContent = guessLeft;
+    guessesFarText.textContent = guessFar;
+    winsText.textContent = wins
+}else if (computerGuess !== userGuess && guessLeft > 0) {
+    guessLeft--;
+    guessFar = guessFar + ", " + userGuess;
+
+    guessesText.textContent = guessLeft;
+    guessesFarText.textContent = guessFar;
+    
+
+}
+
+}
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+body {
+    text-align: center;
+    font-size: large;
+    background-position-x: center;
+    font-family: 'Nunito', sans-serif;
+    align-self: auto;
+    width: 70%;
+    min-height: 80%;
+    box-sizing: border-box;
+    padding: 5% 0;
+    margin: 5% auto;
+    opacity: 0.9;
+  }
